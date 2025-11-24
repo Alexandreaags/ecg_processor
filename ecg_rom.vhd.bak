@@ -1,0 +1,159 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity ecg_processor is
+    port (
+        clk_50mhz : in  std_logic;
+        rst_n     : in  std_logic;
+        hex5, hex4, hex2, hex1, hex0 : out std_logic_vector(6 downto 0)
+        -- Se sua placa tiver LEDs, seria ótimo usar um para debug, mas vamos confiar nos displays
+    );
+end entity;
+
+architecture rtl of ecg_processor is
+
+    component ecg_rom is
+        generic (DATA_WIDTH : integer := 12; ADDR_WIDTH : integer := 14);
+        port (
+            clk  : in  std_logic; 
+            addr : in  std_logic_vector(ADDR_WIDTH-1 downto 0); 
+            q    : out std_logic_vector(DATA_WIDTH-1 downto 0)
+        );
+    end component;
+
+    component ssd_decoder is
+        port (in_val : in std_logic_vector(3 downto 0); out_seg: out std_logic_vector(6 downto 0));
+    end component;
+
+    -- Timing 125Hz (Dividido em 2 fases)
+    constant TICKS_125HZ : integer := 400_000; 
+    signal counter_125hz : integer range 0 to TICKS_125HZ := 0;
+    signal tick_phase    : std_logic := '0'; -- 0 = Update Addr, 1 = Read Data
+
+    -- Memória
+    signal rom_addr : unsigned(13 downto 0) := (others => '0');
+    signal rom_data : std_logic_vector(11 downto 0);
+    signal sample_val : integer range 0 to 4095;
+
+    -- Lógica
+    constant THRESHOLD : integer := 2000; -- Mantido baixo para garantir
+    signal wait_release : boolean := false; 
+    signal samples_since_last_peak : integer range 0 to 4095 := 0; 
+
+    -- Controle
+    signal sample_counter_patient : integer range 0 to 188 := 0; 
+    signal patient_id : integer range 1 to 80 := 1;
+    signal bpm_disp   : integer range 0 to 999 := 999;
+    
+    -- Sinais para Display
+    signal digit_pat_1, digit_pat_0 : std_logic_vector(3 downto 0);
+    signal digit_bpm_2, digit_bpm_1, digit_bpm_0 : std_logic_vector(3 downto 0);
+
+begin
+
+    -- 1. INSTANCIAÇÃO DA MEMÓRIA
+    rom_inst : ecg_rom
+    generic map (DATA_WIDTH => 12, ADDR_WIDTH => 14)
+    port map (
+        clk  => clk_50mhz,
+        addr => std_logic_vector(rom_addr),
+        q    => rom_data
+    );
+    
+    sample_val <= to_integer(unsigned(rom_data));
+
+    -- 2. GERADOR DE TIMING (125Hz com Fase)
+    process(clk_50mhz)
+    begin
+        if rising_edge(clk_50mhz) then
+            if rst_n = '0' then
+                counter_125hz <= 0;
+                tick_phase <= '0';
+            else
+                if counter_125hz >= (TICKS_125HZ/2) - 1 then -- 250Hz (2x mais rápido para fazer 2 fases)
+                    counter_125hz <= 0;
+                    tick_phase <= not tick_phase; -- Alterna entre 0 e 1
+                else
+                    counter_125hz <= counter_125hz + 1;
+                end if;
+            end if;
+        end if;
+    end process;
+
+    -- 3. LÓGICA PRINCIPAL (PIPELINE)
+    process(clk_50mhz)
+    begin
+        if rising_edge(clk_50mhz) then
+            if rst_n = '0' then
+                rom_addr <= (others => '0');
+                sample_counter_patient <= 0;
+                patient_id <= 1;
+                bpm_disp <= 999;
+                samples_since_last_peak <= 0;
+                wait_release <= false;
+                
+            else
+                -- FASE 0: ATUALIZA ENDEREÇO (Prepara a leitura)
+                if counter_125hz = 0 and tick_phase = '0' then
+                    
+                    if sample_counter_patient = 187 then
+                        sample_counter_patient <= 0;
+                        if patient_id = 80 then
+                            patient_id <= 1;
+                            rom_addr <= (others => '0'); 
+                        else
+                            patient_id <= patient_id + 1;
+                            rom_addr <= rom_addr + 1;
+                        end if;
+                    else
+                        sample_counter_patient <= sample_counter_patient + 1;
+                        rom_addr <= rom_addr + 1;
+                    end if;
+
+                -- FASE 1: LÊ DADO E CALCULA (O dado 'q' já está estável aqui)
+                elsif counter_125hz = 0 and tick_phase = '1' then
+                    
+                    -- Régua de tempo
+                    if samples_since_last_peak < 2000 then
+                        samples_since_last_peak <= samples_since_last_peak + 1;
+                    end if;
+
+                    -- Threshold
+                    if sample_val > THRESHOLD then
+                        if not wait_release then
+                            wait_release <= true;
+                            
+                            -- Debug: Se entrar aqui, pelo menos detectou algo!
+                            
+                            if samples_since_last_peak > 10 then
+                                if samples_since_last_peak > 0 then
+                                    bpm_disp <= 7500 / samples_since_last_peak;
+                                end if;
+                            end if;
+                            
+                            samples_since_last_peak <= 0;
+                        end if;
+                    else
+                        wait_release <= false;
+                    end if;
+                    
+                end if; -- Fim das fases
+            end if; -- Fim Reset
+        end if; -- Fim Clock
+    end process;
+
+    -- 4. DISPLAY
+    digit_pat_1 <= std_logic_vector(to_unsigned((patient_id / 10) mod 10, 4));
+    digit_pat_0 <= std_logic_vector(to_unsigned(patient_id mod 10, 4));
+    digit_bpm_2 <= std_logic_vector(to_unsigned((bpm_disp / 100) mod 10, 4)); 
+    digit_bpm_1 <= std_logic_vector(to_unsigned((bpm_disp / 10) mod 10, 4));  
+    digit_bpm_0 <= std_logic_vector(to_unsigned(bpm_disp mod 10, 4));        
+
+    disp_pat1: component ssd_decoder port map (in_val => digit_pat_1, out_seg => hex5);
+    disp_pat0: component ssd_decoder port map (in_val => digit_pat_0, out_seg => hex4);
+    disp_bpm2: component ssd_decoder port map (in_val => digit_bpm_2, out_seg => hex2);
+    disp_bpm1: component ssd_decoder port map (in_val => digit_bpm_1, out_seg => hex1);
+    disp_bpm0: component ssd_decoder port map (in_val => digit_bpm_0, out_seg => hex0);
+
+end rtl;
