@@ -487,7 +487,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : U13       :        :                   :      
 VCCIO4A                      : U14       : power  :                   : 2.5V    : 4A        :                
 hex4[4]                      : U15       : output : 2.5 V             :         : 4A        : Y              
 hex4[3]                      : U16       : output : 2.5 V             :         : 4A        : Y              
-RESERVED_INPUT_WITH_WEAK_PULLUP : U17       :        :                   :         : 4A        :                
+hex3[4]                      : U17       : output : 2.5 V             :         : 4A        : Y              
 VCCA_FPLL                    : U18       : power  :                   : 2.5V    :           :                
 VCCIO4A                      : U19       : power  :                   : 2.5V    : 4A        :                
 hex4[0]                      : U20       : output : 2.5 V             :         : 4A        : Y              
@@ -508,10 +508,10 @@ GND                          : V12       : gnd    :                   :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : V13       :        :                   :         : 4A        :                
 hex2[4]                      : V14       : output : 2.5 V             :         : 4A        : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : V15       :        :                   :         : 4A        :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : V16       :        :                   :         : 4A        :                
+hex3[3]                      : V16       : output : 2.5 V             :         : 4A        : Y              
 GND                          : V17       : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : V18       :        :                   :         : 4A        :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : V19       :        :                   :         : 4A        :                
+hex3[5]                      : V18       : output : 2.5 V             :         : 4A        : Y              
+hex3[6]                      : V19       : output : 2.5 V             :         : 4A        : Y              
 hex4[2]                      : V20       : output : 2.5 V             :         : 4A        : Y              
 hex0[1]                      : V21       : output : 2.5 V             :         : 4A        : Y              
 GND                          : V22       : gnd    :                   :         :           :                
@@ -530,7 +530,7 @@ VCCPD3B4A                    : W12       : power  :                   : 2.5V    
 VCC_AUX                      : W13       : power  :                   : 2.5V    :           :                
 VCCPD3B4A                    : W14       : power  :                   : 2.5V    : 3B, 4A    :                
 VCCIO4A                      : W15       : power  :                   : 2.5V    : 4A        :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : W16       :        :                   :         : 4A        :                
+hex3[1]                      : W16       : output : 2.5 V             :         : 4A        : Y              
 VCCPD3B4A                    : W17       : power  :                   : 2.5V    : 3B, 4A    :                
 VCC_AUX                      : W18       : power  :                   : 2.5V    :           :                
 hex5[6]                      : W19       : output : 2.5 V             :         : 4A        : Y              
@@ -552,8 +552,8 @@ VREFB3BN0                    : Y12       : power  :                   :         
 VCCIO3B                      : Y13       : power  :                   : 2.5V    : 3B        :                
 hex2[3]                      : Y14       : output : 2.5 V             :         : 4A        : Y              
 hex4[5]                      : Y15       : output : 2.5 V             :         : 4A        : Y              
-RESERVED_INPUT_WITH_WEAK_PULLUP : Y16       :        :                   :         : 4A        :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : Y17       :        :                   :         : 4A        :                
+hex3[0]                      : Y16       : output : 2.5 V             :         : 4A        : Y              
+hex3[2]                      : Y17       : output : 2.5 V             :         : 4A        : Y              
 GND                          : Y18       : gnd    :                   :         :           :                
 hex2[0]                      : Y19       : output : 2.5 V             :         : 4A        : Y              
 hex4[1]                      : Y20       : output : 2.5 V             :         : 4A        : Y              
