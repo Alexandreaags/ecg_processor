@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ecg_processor
-Tue Nov 25 20:10:38 2025
+Thu Nov 27 00:13:48 2025
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -15,22 +15,21 @@ Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis DSP Block Usage Summary
- 10. Registers Removed During Synthesis
- 11. General Register Statistics
- 12. Inverted Register Statistics
- 13. Registers Packed Into Inferred Megafunctions
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Source assignments for ecg_rom:rom_inst|altsyncram:Mux11_rtl_0|altsyncram_4871:auto_generated
- 16. Parameter Settings for Inferred Entity Instance: ecg_rom:rom_inst|altsyncram:Mux11_rtl_0
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Registers Packed Into Inferred Megafunctions
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Source assignments for ecg_rom:rom_i|altsyncram:Mux11_rtl_0|altsyncram_4871:auto_generated
+ 15. Parameter Settings for Inferred Entity Instance: ecg_rom:rom_i|altsyncram:Mux11_rtl_0
+ 16. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
  17. Parameter Settings for Inferred Entity Instance: lpm_divide:Div1
- 18. Parameter Settings for Inferred Entity Instance: lpm_divide:Div2
- 19. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
- 20. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1
- 21. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
- 22. altsyncram Parameter Settings by Entity Instance
- 23. Post-Synthesis Netlist Statistics for Top Partition
- 24. Elapsed Time Per Partition
- 25. Analysis & Synthesis Messages
+ 18. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
+ 19. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1
+ 20. Parameter Settings for Inferred Entity Instance: lpm_divide:Div2
+ 21. altsyncram Parameter Settings by Entity Instance
+ 22. Post-Synthesis Netlist Statistics for Top Partition
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
 
 
 
@@ -57,7 +56,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Nov 25 20:10:38 2025       ;
+; Analysis & Synthesis Status     ; Successful - Thu Nov 27 00:13:48 2025       ;
 ; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                   ; ecg_processor                               ;
 ; Top-level Entity Name           ; ecg_processor                               ;
@@ -67,7 +66,7 @@ https://fpgasoftware.intel.com/eula.
 ; Total pins                      ; 44                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 196,608                                     ;
-; Total DSP Blocks                ; 2                                           ;
+; Total DSP Blocks                ; 6                                           ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
 ; Total HSSI TX PCSs              ; 0                                           ;
@@ -177,7 +176,13 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -189,7 +194,7 @@ https://fpgasoftware.intel.com/eula.
 ; ecg_processor.vhd                ; yes             ; User VHDL File               ; /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd                          ;         ;
 ; ecg_rom.vhd                      ; yes             ; User VHDL File               ; /home/alexandre/Documents/github/ecg_processor/ecg_rom.vhd                                ;         ;
 ; ssd_decoder.vhd                  ; yes             ; User VHDL File               ; /home/alexandre/Documents/github/ecg_processor/ssd_decoder.vhd                            ;         ;
-; Fuzzy_Heart_Diag.vhd             ; yes             ; User VHDL File               ; /home/alexandre/Documents/github/ecg_processor/Fuzzy_Heart_Diag.vhd                       ;         ;
+; Multi_Fuzzy_Diag.vhd             ; yes             ; User VHDL File               ; /home/alexandre/Documents/github/ecg_processor/Multi_Fuzzy_Diag.vhd                       ;         ;
 ; altsyncram.tdf                   ; yes             ; Megafunction                 ; /home/alexandre/intelFPGA_lite/20.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
 ; stratix_ram_block.inc            ; yes             ; Megafunction                 ; /home/alexandre/intelFPGA_lite/20.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
 ; lpm_mux.inc                      ; yes             ; Megafunction                 ; /home/alexandre/intelFPGA_lite/20.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
@@ -214,9 +219,9 @@ https://fpgasoftware.intel.com/eula.
 ; db/lpm_divide_u4m.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/alexandre/Documents/github/ecg_processor/db/lpm_divide_u4m.tdf                      ;         ;
 ; db/sign_div_unsign_1nh.tdf       ; yes             ; Auto-Generated Megafunction  ; /home/alexandre/Documents/github/ecg_processor/db/sign_div_unsign_1nh.tdf                 ;         ;
 ; db/alt_u_div_82f.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/alexandre/Documents/github/ecg_processor/db/alt_u_div_82f.tdf                       ;         ;
-; db/lpm_divide_0dm.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/alexandre/Documents/github/ecg_processor/db/lpm_divide_0dm.tdf                      ;         ;
-; db/sign_div_unsign_6nh.tdf       ; yes             ; Auto-Generated Megafunction  ; /home/alexandre/Documents/github/ecg_processor/db/sign_div_unsign_6nh.tdf                 ;         ;
-; db/alt_u_div_i2f.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/alexandre/Documents/github/ecg_processor/db/alt_u_div_i2f.tdf                       ;         ;
+; db/lpm_divide_vcm.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/alexandre/Documents/github/ecg_processor/db/lpm_divide_vcm.tdf                      ;         ;
+; db/sign_div_unsign_7nh.tdf       ; yes             ; Auto-Generated Megafunction  ; /home/alexandre/Documents/github/ecg_processor/db/sign_div_unsign_7nh.tdf                 ;         ;
+; db/alt_u_div_j2f.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/alexandre/Documents/github/ecg_processor/db/alt_u_div_j2f.tdf                       ;         ;
 +----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
 
 
@@ -225,14 +230,14 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------------+
 ; Resource                                    ; Usage           ;
 +---------------------------------------------+-----------------+
-; Estimate of Logic utilization (ALMs needed) ; 405             ;
+; Estimate of Logic utilization (ALMs needed) ; 575             ;
 ;                                             ;                 ;
-; Combinational ALUT usage for logic          ; 769             ;
+; Combinational ALUT usage for logic          ; 1031            ;
 ;     -- 7 input functions                    ; 1               ;
-;     -- 6 input functions                    ; 39              ;
-;     -- 5 input functions                    ; 108             ;
-;     -- 4 input functions                    ; 154             ;
-;     -- <=3 input functions                  ; 467             ;
+;     -- 6 input functions                    ; 115             ;
+;     -- 5 input functions                    ; 163             ;
+;     -- 4 input functions                    ; 249             ;
+;     -- <=3 input functions                  ; 503             ;
 ;                                             ;                 ;
 ; Dedicated logic registers                   ; 106             ;
 ;                                             ;                 ;
@@ -240,12 +245,12 @@ https://fpgasoftware.intel.com/eula.
 ; Total MLAB memory bits                      ; 0               ;
 ; Total block memory bits                     ; 196608          ;
 ;                                             ;                 ;
-; Total DSP Blocks                            ; 2               ;
+; Total DSP Blocks                            ; 6               ;
 ;                                             ;                 ;
 ; Maximum fan-out node                        ; clk_50mhz~input ;
-; Maximum fan-out                             ; 69              ;
-; Total fan-out                               ; 3486            ;
-; Average fan-out                             ; 3.52            ;
+; Maximum fan-out                             ; 130             ;
+; Total fan-out                               ; 4693            ;
+; Average fan-out                             ; 3.74            ;
 +---------------------------------------------+-----------------+
 
 
@@ -254,48 +259,48 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                            ; Entity Name         ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |ecg_processor                            ; 769 (124)           ; 106 (80)                  ; 196608            ; 2          ; 44   ; 0            ; |ecg_processor                                                                                                 ; ecg_processor       ; work         ;
-;    |Fuzzy_Heart_Diag:fuzzy_inst|          ; 81 (81)             ; 25 (25)                   ; 0                 ; 2          ; 0    ; 0            ; |ecg_processor|Fuzzy_Heart_Diag:fuzzy_inst                                                                     ; Fuzzy_Heart_Diag    ; work         ;
-;    |ecg_rom:rom_inst|                     ; 3 (0)               ; 1 (0)                     ; 196608            ; 0          ; 0    ; 0            ; |ecg_processor|ecg_rom:rom_inst                                                                                ; ecg_rom             ; work         ;
-;       |altsyncram:Mux11_rtl_0|            ; 3 (0)               ; 1 (0)                     ; 196608            ; 0          ; 0    ; 0            ; |ecg_processor|ecg_rom:rom_inst|altsyncram:Mux11_rtl_0                                                         ; altsyncram          ; work         ;
-;          |altsyncram_4871:auto_generated| ; 3 (0)               ; 1 (1)                     ; 196608            ; 0          ; 0    ; 0            ; |ecg_processor|ecg_rom:rom_inst|altsyncram:Mux11_rtl_0|altsyncram_4871:auto_generated                          ; altsyncram_4871     ; work         ;
-;             |mux_0hb:mux2|                ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|ecg_rom:rom_inst|altsyncram:Mux11_rtl_0|altsyncram_4871:auto_generated|mux_0hb:mux2             ; mux_0hb             ; work         ;
-;    |lpm_divide:Div0|                      ; 198 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
-;       |lpm_divide_0dm:auto_generated|     ; 198 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div0|lpm_divide_0dm:auto_generated                                                   ; lpm_divide_0dm      ; work         ;
-;          |sign_div_unsign_6nh:divider|    ; 198 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div0|lpm_divide_0dm:auto_generated|sign_div_unsign_6nh:divider                       ; sign_div_unsign_6nh ; work         ;
-;             |alt_u_div_i2f:divider|       ; 198 (198)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div0|lpm_divide_0dm:auto_generated|sign_div_unsign_6nh:divider|alt_u_div_i2f:divider ; alt_u_div_i2f       ; work         ;
-;    |lpm_divide:Div1|                      ; 60 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div1                                                                                 ; lpm_divide          ; work         ;
-;       |lpm_divide_hbm:auto_generated|     ; 60 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div1|lpm_divide_hbm:auto_generated                                                   ; lpm_divide_hbm      ; work         ;
-;          |sign_div_unsign_nlh:divider|    ; 60 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div1|lpm_divide_hbm:auto_generated|sign_div_unsign_nlh:divider                       ; sign_div_unsign_nlh ; work         ;
-;             |alt_u_div_kve:divider|       ; 60 (60)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div1|lpm_divide_hbm:auto_generated|sign_div_unsign_nlh:divider|alt_u_div_kve:divider ; alt_u_div_kve       ; work         ;
-;    |lpm_divide:Div2|                      ; 71 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div2                                                                                 ; lpm_divide          ; work         ;
-;       |lpm_divide_ebm:auto_generated|     ; 71 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div2|lpm_divide_ebm:auto_generated                                                   ; lpm_divide_ebm      ; work         ;
-;          |sign_div_unsign_klh:divider|    ; 71 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div2|lpm_divide_ebm:auto_generated|sign_div_unsign_klh:divider                       ; sign_div_unsign_klh ; work         ;
-;             |alt_u_div_eve:divider|       ; 71 (71)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div2|lpm_divide_ebm:auto_generated|sign_div_unsign_klh:divider|alt_u_div_eve:divider ; alt_u_div_eve       ; work         ;
-;    |lpm_divide:Mod0|                      ; 89 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
-;       |lpm_divide_u4m:auto_generated|     ; 89 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod0|lpm_divide_u4m:auto_generated                                                   ; lpm_divide_u4m      ; work         ;
-;          |sign_div_unsign_1nh:divider|    ; 89 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod0|lpm_divide_u4m:auto_generated|sign_div_unsign_1nh:divider                       ; sign_div_unsign_1nh ; work         ;
-;             |alt_u_div_82f:divider|       ; 89 (89)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod0|lpm_divide_u4m:auto_generated|sign_div_unsign_1nh:divider|alt_u_div_82f:divider ; alt_u_div_82f       ; work         ;
-;    |lpm_divide:Mod1|                      ; 108 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod1                                                                                 ; lpm_divide          ; work         ;
-;       |lpm_divide_u4m:auto_generated|     ; 108 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod1|lpm_divide_u4m:auto_generated                                                   ; lpm_divide_u4m      ; work         ;
-;          |sign_div_unsign_1nh:divider|    ; 108 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod1|lpm_divide_u4m:auto_generated|sign_div_unsign_1nh:divider                       ; sign_div_unsign_1nh ; work         ;
-;             |alt_u_div_82f:divider|       ; 108 (108)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod1|lpm_divide_u4m:auto_generated|sign_div_unsign_1nh:divider|alt_u_div_82f:divider ; alt_u_div_82f       ; work         ;
-;    |ssd_decoder:disp_bpm0|                ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|ssd_decoder:disp_bpm0                                                                           ; ssd_decoder         ; work         ;
-;    |ssd_decoder:disp_bpm1|                ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|ssd_decoder:disp_bpm1                                                                           ; ssd_decoder         ; work         ;
-;    |ssd_decoder:disp_bpm2|                ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|ssd_decoder:disp_bpm2                                                                           ; ssd_decoder         ; work         ;
-;    |ssd_decoder:disp_pat0|                ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|ssd_decoder:disp_pat0                                                                           ; ssd_decoder         ; work         ;
-;    |ssd_decoder:disp_pat1|                ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|ssd_decoder:disp_pat1                                                                           ; ssd_decoder         ; work         ;
+; |ecg_processor                            ; 1031 (149)          ; 106 (99)                  ; 196608            ; 6          ; 44   ; 0            ; |ecg_processor                                                                                                 ; ecg_processor       ; work         ;
+;    |Multi_Fuzzy_Diag:fzy_i|               ; 304 (304)           ; 6 (6)                     ; 0                 ; 6          ; 0    ; 0            ; |ecg_processor|Multi_Fuzzy_Diag:fzy_i                                                                          ; Multi_Fuzzy_Diag    ; work         ;
+;    |ecg_rom:rom_i|                        ; 2 (0)               ; 1 (0)                     ; 196608            ; 0          ; 0    ; 0            ; |ecg_processor|ecg_rom:rom_i                                                                                   ; ecg_rom             ; work         ;
+;       |altsyncram:Mux11_rtl_0|            ; 2 (0)               ; 1 (0)                     ; 196608            ; 0          ; 0    ; 0            ; |ecg_processor|ecg_rom:rom_i|altsyncram:Mux11_rtl_0                                                            ; altsyncram          ; work         ;
+;          |altsyncram_4871:auto_generated| ; 2 (0)               ; 1 (1)                     ; 196608            ; 0          ; 0    ; 0            ; |ecg_processor|ecg_rom:rom_i|altsyncram:Mux11_rtl_0|altsyncram_4871:auto_generated                             ; altsyncram_4871     ; work         ;
+;             |mux_0hb:mux2|                ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|ecg_rom:rom_i|altsyncram:Mux11_rtl_0|altsyncram_4871:auto_generated|mux_0hb:mux2                ; mux_0hb             ; work         ;
+;    |lpm_divide:Div0|                      ; 60 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
+;       |lpm_divide_hbm:auto_generated|     ; 60 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div0|lpm_divide_hbm:auto_generated                                                   ; lpm_divide_hbm      ; work         ;
+;          |sign_div_unsign_nlh:divider|    ; 60 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div0|lpm_divide_hbm:auto_generated|sign_div_unsign_nlh:divider                       ; sign_div_unsign_nlh ; work         ;
+;             |alt_u_div_kve:divider|       ; 60 (60)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div0|lpm_divide_hbm:auto_generated|sign_div_unsign_nlh:divider|alt_u_div_kve:divider ; alt_u_div_kve       ; work         ;
+;    |lpm_divide:Div1|                      ; 71 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div1                                                                                 ; lpm_divide          ; work         ;
+;       |lpm_divide_ebm:auto_generated|     ; 71 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div1|lpm_divide_ebm:auto_generated                                                   ; lpm_divide_ebm      ; work         ;
+;          |sign_div_unsign_klh:divider|    ; 71 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div1|lpm_divide_ebm:auto_generated|sign_div_unsign_klh:divider                       ; sign_div_unsign_klh ; work         ;
+;             |alt_u_div_eve:divider|       ; 71 (71)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div1|lpm_divide_ebm:auto_generated|sign_div_unsign_klh:divider|alt_u_div_eve:divider ; alt_u_div_eve       ; work         ;
+;    |lpm_divide:Div2|                      ; 194 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div2                                                                                 ; lpm_divide          ; work         ;
+;       |lpm_divide_vcm:auto_generated|     ; 194 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div2|lpm_divide_vcm:auto_generated                                                   ; lpm_divide_vcm      ; work         ;
+;          |sign_div_unsign_7nh:divider|    ; 194 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div2|lpm_divide_vcm:auto_generated|sign_div_unsign_7nh:divider                       ; sign_div_unsign_7nh ; work         ;
+;             |alt_u_div_j2f:divider|       ; 194 (194)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Div2|lpm_divide_vcm:auto_generated|sign_div_unsign_7nh:divider|alt_u_div_j2f:divider ; alt_u_div_j2f       ; work         ;
+;    |lpm_divide:Mod0|                      ; 93 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
+;       |lpm_divide_u4m:auto_generated|     ; 93 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod0|lpm_divide_u4m:auto_generated                                                   ; lpm_divide_u4m      ; work         ;
+;          |sign_div_unsign_1nh:divider|    ; 93 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod0|lpm_divide_u4m:auto_generated|sign_div_unsign_1nh:divider                       ; sign_div_unsign_1nh ; work         ;
+;             |alt_u_div_82f:divider|       ; 93 (93)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod0|lpm_divide_u4m:auto_generated|sign_div_unsign_1nh:divider|alt_u_div_82f:divider ; alt_u_div_82f       ; work         ;
+;    |lpm_divide:Mod1|                      ; 112 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod1                                                                                 ; lpm_divide          ; work         ;
+;       |lpm_divide_u4m:auto_generated|     ; 112 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod1|lpm_divide_u4m:auto_generated                                                   ; lpm_divide_u4m      ; work         ;
+;          |sign_div_unsign_1nh:divider|    ; 112 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod1|lpm_divide_u4m:auto_generated|sign_div_unsign_1nh:divider                       ; sign_div_unsign_1nh ; work         ;
+;             |alt_u_div_82f:divider|       ; 112 (112)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|lpm_divide:Mod1|lpm_divide_u4m:auto_generated|sign_div_unsign_1nh:divider|alt_u_div_82f:divider ; alt_u_div_82f       ; work         ;
+;    |ssd_decoder:u0|                       ; 14 (14)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|ssd_decoder:u0                                                                                  ; ssd_decoder         ; work         ;
+;    |ssd_decoder:u1|                       ; 6 (6)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|ssd_decoder:u1                                                                                  ; ssd_decoder         ; work         ;
+;    |ssd_decoder:u2|                       ; 6 (6)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|ssd_decoder:u2                                                                                  ; ssd_decoder         ; work         ;
+;    |ssd_decoder:u3|                       ; 14 (14)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|ssd_decoder:u3                                                                                  ; ssd_decoder         ; work         ;
+;    |ssd_decoder:u4|                       ; 6 (6)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ecg_processor|ssd_decoder:u4                                                                                  ; ssd_decoder         ; work         ;
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                                            ;
-+-----------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+--------+--------------------------------------+
-; Name                                                                              ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF                                  ;
-+-----------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+--------+--------------------------------------+
-; ecg_rom:rom_inst|altsyncram:Mux11_rtl_0|altsyncram_4871:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 16384        ; 12           ; --           ; --           ; 196608 ; ecg_processor.ecg_processor0.rtl.mif ;
-+-----------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+--------+--------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                         ;
++--------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+--------+--------------------------------------+
+; Name                                                                           ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF                                  ;
++--------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+--------+--------------------------------------+
+; ecg_rom:rom_i|altsyncram:Mux11_rtl_0|altsyncram_4871:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 16384        ; 12           ; --           ; --           ; 196608 ; ecg_processor.ecg_processor0.rtl.mif ;
++--------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+--------+--------------------------------------+
 
 
 +-----------------------------------------------+
@@ -303,21 +308,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------+-------------+
 ; Statistic                       ; Number Used ;
 +---------------------------------+-------------+
-; Independent 9x9                 ; 2           ;
-; Total number of DSP blocks      ; 2           ;
+; Independent 9x9                 ; 6           ;
+; Total number of DSP blocks      ; 6           ;
 ;                                 ;             ;
-; Fixed Point Unsigned Multiplier ; 2           ;
+; Fixed Point Unsigned Multiplier ; 6           ;
 +---------------------------------+-------------+
-
-
-+-----------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                ;
-+------------------------------------------+----------------------------------------+
-; Register name                            ; Reason for Removal                     ;
-+------------------------------------------+----------------------------------------+
-; Fuzzy_Heart_Diag:fuzzy_inst|mu_normal[0] ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 1    ;                                        ;
-+------------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -326,11 +321,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 106   ;
-; Number of registers using Synchronous Clear  ; 87    ;
-; Number of registers using Synchronous Load   ; 7     ;
-; Number of registers using Asynchronous Clear ; 61    ;
+; Number of registers using Synchronous Clear  ; 86    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 37    ;
+; Number of registers using Clock Enable       ; 74    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -340,48 +335,57 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; pat_units[0]                           ; 12      ;
-; patient_total_count[0]                 ; 13      ;
+; active_id_unit[0]                      ; 6       ;
+; pat_global_cnt[0]                      ; 3       ;
 ; Total number of inverted registers = 2 ;         ;
 +----------------------------------------+---------+
 
 
-+-----------------------------------------------------------------+
-; Registers Packed Into Inferred Megafunctions                    ;
-+---------------------------+------------------------------+------+
-; Register Name             ; Megafunction                 ; Type ;
-+---------------------------+------------------------------+------+
-; ecg_rom:rom_inst|q[0..11] ; ecg_rom:rom_inst|Mux11_rtl_0 ; ROM  ;
-+---------------------------+------------------------------+------+
++-----------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions              ;
++------------------------+---------------------------+------+
+; Register Name          ; Megafunction              ; Type ;
++------------------------+---------------------------+------+
+; ecg_rom:rom_i|q[0..11] ; ecg_rom:rom_i|Mux11_rtl_0 ; ROM  ;
++------------------------+---------------------------+------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                              ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ecg_processor|pat_tens[0]                              ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |ecg_processor|pat_units[1]                             ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |ecg_processor|bpm_val_int[5]                           ;
-; 3:1                ; 18 bits   ; 36 LEs        ; 0 LEs                ; 36 LEs                 ; Yes        ; |ecg_processor|clk_div_counter[4]                       ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |ecg_processor|Fuzzy_Heart_Diag:fuzzy_inst|mu_high[7]   ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |ecg_processor|Fuzzy_Heart_Diag:fuzzy_inst|mu_low[3]    ;
-; 4:1                ; 12 bits   ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |ecg_processor|samples_between_peaks[4]                 ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |ecg_processor|Fuzzy_Heart_Diag:fuzzy_inst|mu_normal[7] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------+
-; Source assignments for ecg_rom:rom_inst|altsyncram:Mux11_rtl_0|altsyncram_4871:auto_generated ;
-+---------------------------------+--------------------+------+---------------------------------+
-; Assignment                      ; Value              ; From ; To                              ;
-+---------------------------------+--------------------+------+---------------------------------+
-; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                               ;
-+---------------------------------+--------------------+------+---------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
+; 3:1                ; 18 bits   ; 36 LEs        ; 0 LEs                ; 36 LEs                 ; Yes        ; |ecg_processor|stored_id_tens[3]                ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 0 LEs                ; 22 LEs                 ; Yes        ; |ecg_processor|peak_timer[8]                    ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |ecg_processor|div_cnt[7]                       ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ecg_processor|sample_cnt[4]                    ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ecg_processor|pat_global_cnt[5]                ;
+; 4:1                ; 14 bits   ; 28 LEs        ; 0 LEs                ; 28 LEs                 ; Yes        ; |ecg_processor|rom_addr[7]                      ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |ecg_processor|active_id_tens[3]                ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; Yes        ; |ecg_processor|active_id_unit[1]                ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |ecg_processor|Multi_Fuzzy_Diag:fzy_i|c_mu_high ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |ecg_processor|Multi_Fuzzy_Diag:fzy_i|c_mu_low  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |ecg_processor|Multi_Fuzzy_Diag:fzy_i|a_mu_high ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |ecg_processor|Multi_Fuzzy_Diag:fzy_i|a_mu_low  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |ecg_processor|Multi_Fuzzy_Diag:fzy_i|i_mu_high ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |ecg_processor|Multi_Fuzzy_Diag:fzy_i|i_mu_low  ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |ecg_processor|Multi_Fuzzy_Diag:fzy_i|c_mu_norm ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |ecg_processor|Multi_Fuzzy_Diag:fzy_i|a_mu_norm ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |ecg_processor|Multi_Fuzzy_Diag:fzy_i|i_mu_norm ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: ecg_rom:rom_inst|altsyncram:Mux11_rtl_0   ;
+; Source assignments for ecg_rom:rom_i|altsyncram:Mux11_rtl_0|altsyncram_4871:auto_generated ;
++---------------------------------+--------------------+------+------------------------------+
+; Assignment                      ; Value              ; From ; To                           ;
++---------------------------------+--------------------+------+------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                            ;
++---------------------------------+--------------------+------+------------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ecg_rom:rom_i|altsyncram:Mux11_rtl_0      ;
 +------------------------------------+--------------------------------------+----------------+
 ; Parameter Name                     ; Value                                ; Type           ;
 +------------------------------------+--------------------------------------+----------------+
@@ -442,7 +446,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_divide:Div1 ;
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
 +------------------------+----------------+------------------------+
 ; Parameter Name         ; Value          ; Type                   ;
 +------------------------+----------------+------------------------+
@@ -465,7 +469,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_divide:Div2 ;
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div1 ;
 +------------------------+----------------+------------------------+
 ; Parameter Name         ; Value          ; Type                   ;
 +------------------------+----------------+------------------------+
@@ -534,18 +538,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div2 ;
 +------------------------+----------------+------------------------+
 ; Parameter Name         ; Value          ; Type                   ;
 +------------------------+----------------+------------------------+
 ; LPM_WIDTHN             ; 13             ; Untyped                ;
-; LPM_WIDTHD             ; 12             ; Untyped                ;
+; LPM_WIDTHD             ; 11             ; Untyped                ;
 ; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
 ; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
 ; LPM_PIPELINE           ; 0              ; Untyped                ;
 ; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
 ; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
-; CBXI_PARAMETER         ; lpm_divide_0dm ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_vcm ; Untyped                ;
 ; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
 ; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
 ; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
@@ -556,24 +560,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-------------------------------------------------------------------------------------+
-; altsyncram Parameter Settings by Entity Instance                                    ;
-+-------------------------------------------+-----------------------------------------+
-; Name                                      ; Value                                   ;
-+-------------------------------------------+-----------------------------------------+
-; Number of entity instances                ; 1                                       ;
-; Entity Instance                           ; ecg_rom:rom_inst|altsyncram:Mux11_rtl_0 ;
-;     -- OPERATION_MODE                     ; ROM                                     ;
-;     -- WIDTH_A                            ; 12                                      ;
-;     -- NUMWORDS_A                         ; 16384                                   ;
-;     -- OUTDATA_REG_A                      ; UNREGISTERED                            ;
-;     -- WIDTH_B                            ; 1                                       ;
-;     -- NUMWORDS_B                         ; 1                                       ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                                  ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED                            ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                                    ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                               ;
-+-------------------------------------------+-----------------------------------------+
++----------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                 ;
++-------------------------------------------+--------------------------------------+
+; Name                                      ; Value                                ;
++-------------------------------------------+--------------------------------------+
+; Number of entity instances                ; 1                                    ;
+; Entity Instance                           ; ecg_rom:rom_i|altsyncram:Mux11_rtl_0 ;
+;     -- OPERATION_MODE                     ; ROM                                  ;
+;     -- WIDTH_A                            ; 12                                   ;
+;     -- NUMWORDS_A                         ; 16384                                ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                         ;
+;     -- WIDTH_B                            ; 1                                    ;
+;     -- NUMWORDS_B                         ; 1                                    ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                               ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                         ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                 ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                            ;
++-------------------------------------------+--------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -582,41 +586,38 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; arriav_ff             ; 106                         ;
-;     CLR               ; 2                           ;
-;     CLR SCLR          ; 22                          ;
-;     ENA CLR           ; 15                          ;
-;     ENA CLR SCLR      ; 22                          ;
-;     SCLR              ; 36                          ;
-;     SCLR SLD          ; 7                           ;
-;     plain             ; 2                           ;
-; arriav_lcell_comb     ; 778                         ;
-;     arith             ; 368                         ;
+;     ENA               ; 13                          ;
+;     ENA SCLR          ; 61                          ;
+;     SCLR              ; 25                          ;
+;     plain             ; 7                           ;
+; arriav_lcell_comb     ; 1033                        ;
+;     arith             ; 410                         ;
 ;         0 data inputs ; 54                          ;
-;         1 data inputs ; 89                          ;
-;         2 data inputs ; 20                          ;
-;         3 data inputs ; 92                          ;
-;         4 data inputs ; 46                          ;
-;         5 data inputs ; 67                          ;
+;         1 data inputs ; 90                          ;
+;         2 data inputs ; 30                          ;
+;         3 data inputs ; 78                          ;
+;         4 data inputs ; 93                          ;
+;         5 data inputs ; 65                          ;
 ;     extend            ; 1                           ;
 ;         7 data inputs ; 1                           ;
-;     normal            ; 378                         ;
+;     normal            ; 591                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 13                          ;
-;         2 data inputs ; 102                         ;
-;         3 data inputs ; 77                          ;
-;         4 data inputs ; 105                         ;
-;         5 data inputs ; 41                          ;
-;         6 data inputs ; 39                          ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 126                         ;
+;         3 data inputs ; 90                          ;
+;         4 data inputs ; 153                         ;
+;         5 data inputs ; 98                          ;
+;         6 data inputs ; 115                         ;
 ;     shared            ; 31                          ;
 ;         0 data inputs ; 9                           ;
 ;         1 data inputs ; 19                          ;
 ;         4 data inputs ; 3                           ;
-; arriav_mac            ; 2                           ;
+; arriav_mac            ; 6                           ;
 ; boundary_port         ; 44                          ;
 ; stratixv_ram_block    ; 24                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 25.10                       ;
-; Average LUT depth     ; 12.11                       ;
+; Max LUT depth         ; 25.00                       ;
+; Average LUT depth     ; 11.24                       ;
 +-----------------------+-----------------------------+
 
 
@@ -625,7 +626,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -635,12 +636,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Tue Nov 25 20:10:32 2025
+    Info: Processing started: Thu Nov 27 00:13:41 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ecg_processor -c ecg_processor
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file ecg_processor.vhd
-    Info (12022): Found design unit 1: ecg_processor-rtl File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 14
+    Info (12022): Found design unit 1: ecg_processor-rtl File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 13
     Info (12023): Found entity 1: ecg_processor File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file ecg_rom.vhd
     Info (12022): Found design unit 1: ecg_rom-rtl File: /home/alexandre/Documents/github/ecg_processor/ecg_rom.vhd Line: 13
@@ -648,15 +649,15 @@ Info (12021): Found 2 design units, including 1 entities, in source file ecg_rom
 Info (12021): Found 2 design units, including 1 entities, in source file ssd_decoder.vhd
     Info (12022): Found design unit 1: ssd_decoder-rtl File: /home/alexandre/Documents/github/ecg_processor/ssd_decoder.vhd Line: 11
     Info (12023): Found entity 1: ssd_decoder File: /home/alexandre/Documents/github/ecg_processor/ssd_decoder.vhd Line: 4
-Info (12021): Found 2 design units, including 1 entities, in source file Fuzzy_Heart_Diag.vhd
-    Info (12022): Found design unit 1: Fuzzy_Heart_Diag-Behavioral File: /home/alexandre/Documents/github/ecg_processor/Fuzzy_Heart_Diag.vhd Line: 14
-    Info (12023): Found entity 1: Fuzzy_Heart_Diag File: /home/alexandre/Documents/github/ecg_processor/Fuzzy_Heart_Diag.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file Multi_Fuzzy_Diag.vhd
+    Info (12022): Found design unit 1: Multi_Fuzzy_Diag-Behavioral File: /home/alexandre/Documents/github/ecg_processor/Multi_Fuzzy_Diag.vhd Line: 18
+    Info (12023): Found entity 1: Multi_Fuzzy_Diag File: /home/alexandre/Documents/github/ecg_processor/Multi_Fuzzy_Diag.vhd Line: 5
 Info (12127): Elaborating entity "ecg_processor" for the top level hierarchy
-Info (12128): Elaborating entity "ecg_rom" for hierarchy "ecg_rom:rom_inst" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 67
-Info (12128): Elaborating entity "Fuzzy_Heart_Diag" for hierarchy "Fuzzy_Heart_Diag:fuzzy_inst" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 88
-Info (12128): Elaborating entity "ssd_decoder" for hierarchy "ssd_decoder:disp_pat1" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 216
+Info (12128): Elaborating entity "ecg_rom" for hierarchy "ecg_rom:rom_i" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 73
+Info (12128): Elaborating entity "Multi_Fuzzy_Diag" for hierarchy "Multi_Fuzzy_Diag:fzy_i" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 78
+Info (12128): Elaborating entity "ssd_decoder" for hierarchy "ssd_decoder:u0" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 83
 Info (19000): Inferred 1 megafunctions from design logic
-    Info (276031): Inferred altsyncram megafunction from the following design logic: "ecg_rom:rom_inst|Mux11_rtl_0"
+    Info (276031): Inferred altsyncram megafunction from the following design logic: "ecg_rom:rom_i|Mux11_rtl_0"
         Info (286033): Parameter OPERATION_MODE set to ROM
         Info (286033): Parameter WIDTH_A set to 12
         Info (286033): Parameter WIDTHAD_A set to 14
@@ -665,13 +666,13 @@ Info (19000): Inferred 1 megafunctions from design logic
         Info (286033): Parameter RAM_BLOCK_TYPE set to AUTO
         Info (286033): Parameter INIT_FILE set to ecg_processor.ecg_processor0.rtl.mif
 Info (278001): Inferred 5 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 209
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div2" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 210
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 210
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 211
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 161
-Info (12130): Elaborated megafunction instantiation "ecg_rom:rom_inst|altsyncram:Mux11_rtl_0"
-Info (12133): Instantiated megafunction "ecg_rom:rom_inst|altsyncram:Mux11_rtl_0" with the following parameter:
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 85
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 86
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 86
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 87
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div2" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 143
+Info (12130): Elaborated megafunction instantiation "ecg_rom:rom_i|altsyncram:Mux11_rtl_0"
+Info (12133): Instantiated megafunction "ecg_rom:rom_i|altsyncram:Mux11_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "ROM"
     Info (12134): Parameter "WIDTH_A" = "12"
     Info (12134): Parameter "WIDTHAD_A" = "14"
@@ -685,8 +686,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/deco
     Info (12023): Found entity 1: decode_u0a File: /home/alexandre/Documents/github/ecg_processor/db/decode_u0a.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_0hb.tdf
     Info (12023): Found entity 1: mux_0hb File: /home/alexandre/Documents/github/ecg_processor/db/mux_0hb.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div1" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 209
-Info (12133): Instantiated megafunction "lpm_divide:Div1" with the following parameter: File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 209
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 85
+Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 85
     Info (12134): Parameter "LPM_WIDTHN" = "10"
     Info (12134): Parameter "LPM_WIDTHD" = "7"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -697,8 +698,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_nlh File: /home/alexandre/Documents/github/ecg_processor/db/sign_div_unsign_nlh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_kve.tdf
     Info (12023): Found entity 1: alt_u_div_kve File: /home/alexandre/Documents/github/ecg_processor/db/alt_u_div_kve.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div2" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 210
-Info (12133): Instantiated megafunction "lpm_divide:Div2" with the following parameter: File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 210
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div1" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 86
+Info (12133): Instantiated megafunction "lpm_divide:Div1" with the following parameter: File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 86
     Info (12134): Parameter "LPM_WIDTHN" = "10"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -709,8 +710,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_klh File: /home/alexandre/Documents/github/ecg_processor/db/sign_div_unsign_klh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_eve.tdf
     Info (12023): Found entity 1: alt_u_div_eve File: /home/alexandre/Documents/github/ecg_processor/db/alt_u_div_eve.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 210
-Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 210
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 86
+Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 86
     Info (12134): Parameter "LPM_WIDTHN" = "10"
     Info (12134): Parameter "LPM_WIDTHD" = "10"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -721,35 +722,33 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_1nh File: /home/alexandre/Documents/github/ecg_processor/db/sign_div_unsign_1nh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_82f.tdf
     Info (12023): Found entity 1: alt_u_div_82f File: /home/alexandre/Documents/github/ecg_processor/db/alt_u_div_82f.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 161
-Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 161
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div2" File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 143
+Info (12133): Instantiated megafunction "lpm_divide:Div2" with the following parameter: File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 143
     Info (12134): Parameter "LPM_WIDTHN" = "13"
-    Info (12134): Parameter "LPM_WIDTHD" = "12"
+    Info (12134): Parameter "LPM_WIDTHD" = "11"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
-Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_0dm.tdf
-    Info (12023): Found entity 1: lpm_divide_0dm File: /home/alexandre/Documents/github/ecg_processor/db/lpm_divide_0dm.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_6nh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_6nh File: /home/alexandre/Documents/github/ecg_processor/db/sign_div_unsign_6nh.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_i2f.tdf
-    Info (12023): Found entity 1: alt_u_div_i2f File: /home/alexandre/Documents/github/ecg_processor/db/alt_u_div_i2f.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_vcm.tdf
+    Info (12023): Found entity 1: lpm_divide_vcm File: /home/alexandre/Documents/github/ecg_processor/db/lpm_divide_vcm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_7nh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_7nh File: /home/alexandre/Documents/github/ecg_processor/db/sign_div_unsign_7nh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_j2f.tdf
+    Info (12023): Found entity 1: alt_u_div_j2f File: /home/alexandre/Documents/github/ecg_processor/db/alt_u_div_j2f.tdf Line: 23
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "hex3[0]" is stuck at VCC File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 10
+    Warning (13410): Pin "hex3[3]" is stuck at VCC File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 9
 Info (286030): Timing-Driven Synthesis is running
-Critical Warning (18061): Ignored Power-Up Level option on the following registers
-    Critical Warning (18010): Register pat_units[0] will power up to High File: /home/alexandre/Documents/github/ecg_processor/ecg_processor.vhd Line: 133
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 843 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1123 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 42 output pins
-    Info (21061): Implemented 773 logic cells
+    Info (21061): Implemented 1049 logic cells
     Info (21064): Implemented 24 RAM segments
-    Info (21062): Implemented 2 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 544 megabytes
-    Info: Processing ended: Tue Nov 25 20:10:38 2025
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:16
+    Info (21062): Implemented 6 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 580 megabytes
+    Info: Processing ended: Thu Nov 27 00:13:48 2025
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:17
 
 

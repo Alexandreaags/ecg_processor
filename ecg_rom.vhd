@@ -5,13 +5,13 @@ use ieee.numeric_std.all;
 entity ecg_rom is
     port (
         clk  : in  std_logic;
-        addr : in  integer range 0 to 16383; -- Endereço agora é Inteiro para facilitar
-        q    : out integer range 0 to 4095   -- Saída Inteira
+        addr : in  integer range 0 to 16383; 
+        q    : out integer range 0 to 4095  
     );
 end entity;
 
 architecture rtl of ecg_rom is
-    -- Definição do Array Gigante
+    -- Definição do Array 
     type memory_t is array(0 to 16383) of integer range 0 to 4095;
     
     constant ROM_DATA : memory_t := (

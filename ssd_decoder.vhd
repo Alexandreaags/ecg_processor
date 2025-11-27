@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 entity ssd_decoder is
     port (
         in_val : in  std_logic_vector(3 downto 0);
-        out_seg: out std_logic_vector(6 downto 0) -- gfedcba (0 acende)
+        out_seg: out std_logic_vector(6 downto 0) 
     );
 end entity;
 
@@ -13,7 +13,6 @@ begin
     process(in_val)
     begin
         case in_val is
-            -- Lógica invertida (0 = LED ligado) comum na maioria das placas DE
             when "0000" => out_seg <= "1000000"; -- 0
             when "0001" => out_seg <= "1111001"; -- 1
             when "0010" => out_seg <= "0100100"; -- 2

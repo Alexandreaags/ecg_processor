@@ -60,15 +60,15 @@
 					"strict" : false
 				},
 				{
+					"name" : "hex3[0]",
+					"strict" : false
+				},
+				{
 					"name" : "hex3[1]",
 					"strict" : false
 				},
 				{
 					"name" : "hex3[2]",
-					"strict" : false
-				},
-				{
-					"name" : "hex3[3]",
 					"strict" : false
 				},
 				{
@@ -168,11 +168,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "rst_n",
+					"name" : "clk_50mhz",
 					"strict" : false
 				},
 				{
-					"name" : "clk_50mhz",
+					"name" : "rst_n",
 					"strict" : false
 				}
 			]
