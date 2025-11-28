@@ -1,0 +1,6 @@
+
+State Machine - |ecg_processor|current_state
+Name current_state.ST_MEASURING current_state.ST_WAIT_RELEASE current_state.ST_IDLE 
+current_state.ST_IDLE 0 0 0 
+current_state.ST_WAIT_RELEASE 0 1 1 
+current_state.ST_MEASURING 1 0 1 

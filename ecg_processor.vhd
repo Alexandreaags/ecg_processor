@@ -28,7 +28,11 @@ architecture rtl of ecg_processor is
         );
     end component;
 
-    -- Valores de Display REGISTRADOS(Inicializa a Unidade em 0 para começar em 00)
+    -- Definição da Máquina de Estados
+    type state_type is (ST_IDLE, ST_WAIT_RELEASE, ST_MEASURING);
+    signal current_state : state_type := ST_IDLE;
+
+    -- Valores de Display REGISTRADOS
     signal stored_id_tens : integer range 0 to 9 := 0;
     signal stored_id_unit : integer range 0 to 9 := 0; 
     signal stored_bpm     : integer range 0 to 999 := 0;
@@ -44,10 +48,8 @@ architecture rtl of ecg_processor is
     signal sample_data    : integer range 0 to 4095 := 0;
     signal sample_cnt     : integer range 0 to 188 := 0; 
     signal peak_timer     : integer range 0 to 2000 := 0;
-    signal wait_low       : boolean := false;
-    signal first_peak     : boolean := false;
     
-    -- Controle de Tempo (Limites ajustados para atraso de 2s)
+    -- Controle de Tempo
     signal tick_enable    : std_logic; 
     signal div_cnt        : integer range 0 to 600000 := 0; 
     signal show_diag_mode : std_logic;
@@ -72,7 +74,6 @@ begin
     -- Instanciações
     rom_i : ecg_rom port map (clk_50mhz, rom_addr, sample_data);
 
-    -- Lógica para a entrada Fuzzy
     fzy_in <= std_logic_vector(to_unsigned(stored_bpm, 8)) when stored_bpm < 255 else "11111111";
     
     fzy_i : Multi_Fuzzy_Diag port map (
@@ -86,7 +87,6 @@ begin
     u3: ssd_decoder port map (std_logic_vector(to_unsigned((stored_bpm/10) mod 10, 4)), s_bpt);
     u4: ssd_decoder port map (std_logic_vector(to_unsigned(stored_bpm mod 10, 4)), s_bpu);
 
-    -- Alternância da Tela: 1s iniciais (amostras 0-93) Números, 1s finais (amostras 94-187) Diagnósticos
     show_diag_mode <= '1' when sample_cnt > 94 else '0';
 
     process(show_diag_mode, s_idt, s_idu, s_bph, s_bpt, s_bpu, d_child, d_adult, d_elder)
@@ -111,14 +111,15 @@ begin
                 pat_global_cnt <= 1;
                 active_id_tens <= 0; active_id_unit <= 1;
                 
-                -- Inicializa REGISTRADO para 00 para que a tela comece corretamente
                 stored_id_tens <= 0; stored_id_unit <= 0; stored_bpm <= 0;
                 
                 div_cnt <= 0; tick_enable <= '0';
-                wait_low <= false; first_peak <= false;
+                
+                -- Reset da FSM
+                current_state <= ST_IDLE;
+                peak_timer <= 0;
             else
-                -- Logica de Atraso de 2.0s: 50MHz / 531914 = Tick de 94Hz
-
+                -- Divisor de Clock (Tick approx 94Hz)
                 tick_enable <= '0';
                 if div_cnt >= 531914 then 
                     div_cnt <= 0;
@@ -129,33 +130,47 @@ begin
 
                 if tick_enable = '1' then
                     
+                    -- Timer roda independente do estado, desde que não estoure
                     if peak_timer < 2000 then peak_timer <= peak_timer + 1; end if;
 
-                    if sample_data > 3480 then
-                        if not wait_low then
-                            wait_low <= true;
-                            if not first_peak then
-                                first_peak <= true;
-                                peak_timer <= 0;
-                            else
+                    -- Máquina de Estados para Detecção de Pico
+                    case current_state is
+                        
+                        -- ST_IDLE: Aguarda o primeiro pulso apenas para sincronizar o início da contagem
+                        when ST_IDLE =>
+                            if sample_data > 3480 then
+                                peak_timer <= 0; -- Zera timer para começar a medir a distância até o próximo
+                                current_state <= ST_WAIT_RELEASE;
+                            end if;
+
+                        -- ST_WAIT_RELEASE: O sinal está alto, esperamos cair para evitar falsos positivos
+                        when ST_WAIT_RELEASE =>
+                            if sample_data < 2000 then
+                                current_state <= ST_MEASURING;
+                            end if;
+
+                        -- ST_MEASURING:O sinal está baixo, estamos contando o tempo (peak_timer incrementando acima)
+                        -- Se detectarmos um novo pico aqui, calculamos o BPM
+                        when ST_MEASURING =>
+                            if sample_data > 3480 then
+                                -- Pico encontrado!
                                 if peak_timer > 5 then
-                                    -- Constante Ajustada: 60 * 94Hz = 5640
                                     active_bpm <= 7500 / peak_timer;
                                 end if;
-                                peak_timer <= 0;
+                                peak_timer <= 0; -- Reinicia contagem para o próximo
+                                current_state <= ST_WAIT_RELEASE; -- Volta a esperar o sinal descer
                             end if;
-                        end if;
-                    elsif sample_data < 2000 then
-                        wait_low <= false;
-                    end if;
+                            
+                    end case;
 
+                    -- Lógica de troca de paciente/display (Reset cíclico)
                     if sample_cnt = 187 then
                         stored_id_tens <= active_id_tens;
                         stored_id_unit <= active_id_unit;
                         stored_bpm     <= active_bpm;
 
                         sample_cnt <= 0;
-                        first_peak <= false;
+                        current_state <= ST_IDLE; -- Força volta para busca inicial (reseta first_peak logicamente)
                         
                         if pat_global_cnt = 80 then
                             pat_global_cnt <= 1;
