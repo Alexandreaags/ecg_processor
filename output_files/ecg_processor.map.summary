@@ -1,11 +1,11 @@
-Analysis & Synthesis Status : Successful - Fri Nov 28 10:48:45 2025
-Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+Analysis & Synthesis Status : Successful - Sat Nov 29 19:11:52 2025
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 Revision Name : ecg_processor
 Top-level Entity Name : ecg_processor
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 106
-Total pins : 44
+Total registers : 110
+Total pins : 47
 Total virtual pins : 0
 Total block memory bits : 196,608
 Total DSP Blocks : 6
